@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <style>
+        .active{
+            color: red;cursor: pointer;}
+        .activeClass{
+            color: yellow;
+        }
+        .errorClass{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <h4>1.绑定class</h4>
+    <h5>1.1对象语法</h5>
+    <div>是否激活: <span @click="isActive=!isActive" :class="{ active: isActive }">{{isActive? '是':'否'}}</span></div>
+    <h5>1.2数组语法</h5>
+    <div :class="[activeClass, errorClass]">{{activeClass? 'activeClass':''}}<br>{{errorClass? 'errorClass':''}}</div>
+
+    <h4>2绑定内联样式:style</h4>
+    <h5>2.1对象语法</h5>
+    <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">内联style对象</div>
+    <h5>2.1数组语法</h5>
+    <div v-bind:style="[baseStyles, overridingStyles]">内联style数组</div>
+
+</div>
+<script>
+    let data = {
+        isActive: true,
+        hasError: false,
+        activeClass: 'active',
+        errorClass: 'text-danger',
+        activeColor: 'red',
+        fontSize: 30,
+        baseStyles: {
+            color: 'orange',
+            fontSize: '20px'
+        },
+        overridingStyles: {
+            textDecoration: 'underLine',
+        },
+    }
+    // 该对象被加入到一个 Vue 实例中
+    let vm = new Vue({
+        el:'#root',
+        data: data
+    })
+
+
+</script>
+</body>
+</html>

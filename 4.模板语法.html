@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<div id="root">
+    <div>文本:简单字符串: {{ msg }}</div>
+    <div>原始 HTML: <span v-html="htmlData"></span> </div>
+    <div>Attribute: <span :id="idData">{{idData}}</span> </div>
+    <div> JavaScript 表达式: <span>{{ number + 1 }}</span> </div>
+    <div> JavaScript 表达式: <span>{{ msg.split('').reverse().join('') }}</span> </div>
+<!--    todo   注意  属性  为 attributeName 会抛错-->
+<!-- 这一个会报错  因为attributeName 不能这么使用 类似关键字   <div> 动态参数:<a v-bind:[attributeName]="`https://www.baidu.com/`" target="_blank"> ...点击跳转 </a></div>-->
+    <div> 动态参数:<a v-bind:[attrname2]="`https://www.baidu.com/`" target="_blank"> ...点击跳转 </a></div>
+    <input type="text" v-bind:[attrname]="attrValue"/>
+</div>
+<script>
+    let data = {
+        msg: "这是一个message",
+        htmlData:`<strong>你好啊这是个html</strong>`,
+        idData:`这是一个id值`,
+        number:1,
+        attributeName:'href',
+        attrname2:'href',
+        urlHref:'https://www.baidu.com/',
+        attrname: 'readonly',
+        attrValue: true,
+    }
+    // 该对象被加入到一个 Vue 实例中
+    let vm = new Vue({
+        el:'#root',
+        data: data
+    })
+
+</script>
+</body>
+</html>
