@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        overflow-x: hidden;}
+        li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div id="head" style="width: 100%;height: 200%;">
+    <ul  >
+        <li v-for="(item) in listData">
+            <a href="javascript:void(0)" @click='currentUrl=item.url' > {{item.name}}</a>
+        </li>
+    </ul>
+    <iframe style="position: relative;z-index: 2;margin-top:30px;width: 100%;height: 100%;" :src="currentUrl" frameborder="0"></iframe>
+</div>
+<script>
+    let data = {
+        currentUrl:'',
+        listData:[
+            {
+                name:'1.创建一个 Vue 实例.html',
+                url:'1.创建一个 Vue 实例.html'
+            },
+            {
+                name:'2.vue生命周期图.html',
+                url:'2.vue生命周期图.html'
+            },
+            {
+                name:'3.vue生命周期详解.html',
+                url:'3.vue生命周期详解.html'
+            },
+            {
+                name:'4.模板语法.html',
+                url:'4.模板语法.html'
+            },
+            {
+                name:'5.计算属性和侦听器.html',
+                url:'5.计算属性和侦听器.html'
+            },
+            {
+                name:'6.class和style绑定.html',
+                url:'6.class和style绑定.html'
+            },
+            {
+                name:'7.条件渲染.html',
+                url:'7.条件渲染.html'
+            },
+            {
+                name:'11.组件基础.html',
+                url:'11.组件基础.html'
+            },
+            {
+                name:'',
+                url:''
+            },
+            {
+                name:'',
+                url:''
+            },
+        ]}
+    // 该对象被加入到一个 Vue 实例中
+    let vm = new Vue({
+        el:'#head',
+        data: data
+    })
+
+</script>
+</body>
+</html>
